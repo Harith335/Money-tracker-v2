@@ -1,10 +1,9 @@
 import Header from "./Header";
 import Tracker from "./Tracker";
 import AddTransaction from "./AddTransaction";
-// import TrackerThisMonth from "./TrackerThisMonth";
 import Transaction from "./Transaction";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function App() {
   const [transactions, setTransactions] = useState([]);
@@ -16,13 +15,16 @@ function App() {
     );
   }
 
-  const totalIncome = transactions
-    .filter((transactions) => transactions.amount > 0)
-    .reduce((total, transactions) => total + transactions.amount, 0);
+useEffect(() =>{ const saved=localStorage.getItem("transactions")
+if(saved){
+  setTransactions(JSON.parse(saved))
+}},[])
 
-  const totalExpense = transactions
-    .filter((transactions) => transactions.amount < 0)
-    .reduce((total, transactions) => total + transactions.amount, 0);
+useEffect(()=>{
+  localStorage.setItem("transactions",JSON.stringify(transactions))}
+,[transactions])
+
+}
 
   return (
     <>
@@ -31,12 +33,7 @@ function App() {
         <div className="mt-6 grid gap-6 md:grid-cols-3 md:grid-rows-2 ">
           <div className="space-y-6">
             <AddTransaction setTransactions={setTransactions} />
-            <Tracker
-              totalIncome={totalIncome}
-              totalExpense={totalExpense}
-              total={total}
-            />
-            {/* <TrackerThisMonth /> */}
+            <Tracker total={total} />
           </div>
           <Transaction transactions={transactions} />
         </div>

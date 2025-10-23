@@ -23,7 +23,6 @@ const AddTransaction = ({ setTransactions }) => {
   const [amount, setAmount] = useState("");
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -40,7 +39,6 @@ const AddTransaction = ({ setTransactions }) => {
     setAmount("");
     setDescription("");
     setCategory("");
-    setErrorMessage("");
   };
 
   return (
@@ -65,7 +63,7 @@ const AddTransaction = ({ setTransactions }) => {
                 onChange={(e) => setAmount(e.target.value)}
                 value={amount}
                 min={1}
-                max={100000}
+                max={10000000}
               />
             </div>
 
