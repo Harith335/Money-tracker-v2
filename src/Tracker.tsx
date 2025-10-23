@@ -6,7 +6,7 @@ const Tracker = ({ total }) => {
     <Card className="w-full max-w-sm">
       <div className="ml-4 grid gap-4">
         <Label className="text-gray-400">Total Expenses</Label>
-        <Label className="font-bold text-4xl">${total}</Label>
+        <Label className="font-bold text-4xl">${total.toFixed(2)}</Label>
       </div>
     </Card>
   );

@@ -6,7 +6,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-const Transaction = ({ transactions }) => {
+const Transaction = ({ transactions, onDelete }) => {
   return (
     <Card className="h-[400px] w-full col-span-2 overflow-y-auto">
       <CardHeader>
@@ -24,16 +24,27 @@ const Transaction = ({ transactions }) => {
           </div>
         ) : (
           transactions.map((tx) => (
-            <div key={tx.id} className="border-b pb-2">
-              <p className="font-semibold">{tx.description}</p>
-              <p className="text-sm text-gray-500">{tx.category}</p>
-              <p
-                className={`text-sm ${
-                  tx.amount > 0 ? "text-green-600" : "text-red-600"
-                }`}
+            <div
+              key={tx.id}
+              className="border-b pb-2 flex justify-between items-start"
+            >
+              <div>
+                <p className="font-semibold">{tx.description}</p>
+                <p className="text-sm text-gray-500">{tx.category}</p>
+                <p
+                  className={`text-sm ${
+                    tx.amount > 0 ? "text-green-600" : "text-red-600"
+                  }`}
+                >
+                  ${tx.amount.toFixed(2)}
+                </p>
+              </div>
+              <button
+                onClick={() => onDelete(tx.id)}
+                className="text-red-500 text-sm hover:underline"
               >
-                ${tx.amount.toFixed(2)}
-              </p>
+                Delete
+              </button>
             </div>
           ))
         )}
