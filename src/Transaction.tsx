@@ -5,6 +5,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { Trash } from "lucide-react";
 
 const Transaction = ({ transactions, onDelete }) => {
   return (
@@ -26,25 +27,20 @@ const Transaction = ({ transactions, onDelete }) => {
           transactions.map((tx) => (
             <div
               key={tx.id}
-              className="border-b pb-2 flex justify-between items-start"
+              className="border-b pb-4 px-4 flex justify-between items-center shadow-sm rounded-md bg-white"
             >
               <div>
                 <p className="font-semibold">{tx.description}</p>
                 <p className="text-sm text-gray-500">{tx.category}</p>
-                <p
-                  className={`text-sm ${
-                    tx.amount > 0 ? "text-green-600" : "text-red-600"
-                  }`}
-                >
-                  ${tx.amount.toFixed(2)}
-                </p>
               </div>
-              <button
-                onClick={() => onDelete(tx.id)}
-                className="text-red-500 text-sm hover:underline"
-              >
-                Delete
-              </button>
+
+              <div className="flex items-center gap-3">
+                <p className={"text-sm "}>${tx.amount.toFixed(2)}</p>
+                <Trash
+                  onClick={() => onDelete(tx.id)}
+                  className="text-red-500 text-sm cursor-pointer hover:scale-105 transition-transform"
+                />
+              </div>
             </div>
           ))
         )}
