@@ -31,7 +31,11 @@ function App() {
         <div className="mt-6 grid gap-6 md:grid-cols-3 md:grid-rows-2 ">
           <div className="space-y-6">
             <AddTransaction setTransactions={setTransactions} />
-            <Tracker totalIncome={totalIncome} totalExpense={totalExpense} />
+            <Tracker
+              totalIncome={totalIncome}
+              totalExpense={totalExpense}
+              total={total}
+            />
             {/* <TrackerThisMonth /> */}
           </div>
           <Transaction transactions={transactions} />

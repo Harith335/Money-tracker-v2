@@ -28,11 +28,6 @@ const AddTransaction = ({ setTransactions }) => {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    if (!amount || !description || !category) {
-      setErrorMessage("Please fill out all fields before submitting.");
-      return;
-    }
-
     const transactionData = {
       amount: parseFloat(amount),
       description,
@@ -78,7 +73,7 @@ const AddTransaction = ({ setTransactions }) => {
               <Label htmlFor="category" className="mb-2.5">
                 Category
               </Label>
-              <Select value={category} onValueChange={setCategory}>
+              <Select value={category} onValueChange={setCategory} required>
                 <SelectTrigger className="w-[180px]">
                   <SelectValue placeholder="Select Category" />
                 </SelectTrigger>
@@ -109,10 +104,6 @@ const AddTransaction = ({ setTransactions }) => {
                 value={description}
               />
             </div>
-
-            {errorMessage && (
-              <p className="text-red-500 text-sm mt-2">{errorMessage}</p>
-            )}
 
             <CardFooter className="flex-col gap-2 mt-4">
               <Button type="submit" className="w-full">

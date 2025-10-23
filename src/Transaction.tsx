@@ -43,4 +43,3 @@ const Transaction = ({ transactions }) => {
 };
 
 export default Transaction;
-
