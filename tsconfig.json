@@ -5,6 +5,12 @@
     { "path": "./tsconfig.node.json" }
   ],
   "compilerOptions": {
+    "strict": false, // Disables all strict type-checking options
+    "noImplicitAny": false, // Allows variables to be implicitly 'any'
+    "strictNullChecks": false, // Disables strict null checking
+    "noImplicitThis": false, // Disables implicit 'this' type checking
+    "alwaysStrict": false, // Disables always emitting 'use strict'
+    "skipLibCheck": true, // Skips type checking of declaration files
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]

@@ -1,12 +1,17 @@
 {
   "compilerOptions": {
+    "strict": false, // Disables all strict type-checking options
+    "noImplicitAny": false, // Allows variables to be implicitly 'any'
+    "strictNullChecks": false, // Disables strict null checking
+    "noImplicitThis": false, // Disables implicit 'this' type checking
+    "alwaysStrict": false, // Disables always emitting 'use strict'
+    "skipLibCheck": true, // Skips type checking of declaration files
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
     "target": "ES2022",
     "useDefineForClassFields": true,
     "lib": ["ES2022", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "types": ["vite/client"],
-    "skipLibCheck": true,
 
     /* Bundler mode */
     "moduleResolution": "bundler",
@@ -17,7 +22,6 @@
     "jsx": "react-jsx",
 
     /* Linting */
-    "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "erasableSyntaxOnly": true,

@@ -10,12 +10,14 @@ function App() {
     const saved = localStorage.getItem("transactions");
     return saved ? JSON.parse(saved) : [];
   });
+
   function total() {
     return transactions.reduce(
       (total, transaction) => total + transaction.amount,
       0
     );
   }
+
   const handleDelete = (id) => {
     setTransactions((prev) => prev.filter((tx) => tx.id !== id));
   };
